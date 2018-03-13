@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style type="text/css">
+
+div section form table th {
+background : orange;
+color: navy;
+font-weight:bold;
+}
+
+</style>
+
+<script type="text/javascript" src="/FWP/resources/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+   function checkid(){
+   //ajax를 사용하자. 서버컨트롤러와 아이디 중복체크확인처리.
+		alert("함수 구동확인")
+		console.log("1");
+			console.log($("input[name=pw]").val() );
+			console.log($("input[name=repw]").val());
+
+   };
+   </script>
+ 
+   <script type="text/javascript">
+ function checkpw(){
+ if( 
+		$("input[name=pw]").val() != $("input[name=repw]").val() 
+		){
+	    alert("암호 확인해라 새끼야");
+		return false
+	   }else{
+		return true
+	   }
+	};
+
+ $(function(){
+ $("input[name=repw]").blur(  function(){
+		 if( $("input[name=pw]").val() != $("input[name=repw]").val()){
+		   alert("암호 확인해라 새끼야");} 
+ })
+ });
+
+   
+
+
+</script>
+
+</head>
+<body>
+<div id="" class="" style="margin-left:30%; margin-rignt:30%; width:750px" >
+	
+
+<section> 
+
+<h2 align="center">회원 가입 페이지</h2>
+<br>
+<div>
+<form action="/FWP/minsert" method="post" >
+<table width="750">
+<tr height="40"><th width="150">* 아이디</th>
+<td>
+<input type="text" name="id" required>&nbsp;
+<button onclick="checkid();">중복확인</button>
+</td>
+
+</tr>
+<tr height="40"><th width="150" required>* 이르음</th><td>
+<input type="text" name="na"> 
+</td></tr>
+<tr height="40"><th width="150" required>* 비이번</th><td>
+<input type="password" name="pw">
+</td></tr>
+<tr height="40"><th width="150" required>* 비이번확인해라</th><td>
+<input type="password" name="repw" required>
+</td></tr>
+<tr height="40"><th width="150" required>성별</th><td>
+<input type="radio" name="gender" value="M">남 &nbsp; 
+<input type="radio" name="gender" value="F">여
+</td></tr>
+<tr height="40"><th width="150">나이</th><td><input type="number" name="age"></td>
+
+</tr>
+<tr height="40"><th width="150">이메일</th><td><input type="email" name="email"></td>
+
+</tr>
+<tr height="40"><th width="150">전화번호</th><td><input type="tel" name="phone"></td>
+
+</tr>
+<tr height="40"><th width="150">취 미</th><td>
+<table>
+<tr>
+<td width="150"><input type="checkbox" name="hobby" value="game"> 게임</td>
+<td width="150"><input type="checkbox" name="hobby" value="reading"> 독서</td>
+<td width="150"><input type="checkbox" name="hobby" value="music"> 음악감상</td>
+
+<td width="150"><input type="checkbox" name="hobby" value="climb"> 등신</td>
+<td width="150"><input type="checkbox" name="hobby" value="sport">웅동</td>
+<td width="150"><input type="checkbox" name="hobby" value="movie">영화감상</td>
+</tr>
+</table>
+
+</td>
+
+</tr>
+<tr height="40"><th width="150">특이사항</th><td>
+<textarea name="etc" rows="3" cols="30"></textarea>
+</td>
+</tr>
+
+<tr height="40">
+
+
+<th width="150" colspan="2">
+<input type="submit" value="가입하자" onclick="return checkpw();">&nbsp;
+<input type="submit" value="취소하자">&nbsp;
+<a href="/FWP/index.jsp">시작페이지로 가자 시발아</a>
+</th>
+<td>
+</td>
+
+</tr>
+
+</table>
+</form>
+</section>
+</div>
+
+</body>
+</html>
