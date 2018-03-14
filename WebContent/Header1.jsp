@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>admin</title>
+<title>일반인</title>
 </head>
-<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+<link href="/FWP/resources/css/newcss.css" rel="stylesheet" type="text/css">
 <body>
 
 <h1>첫 jsp</h1>
@@ -14,7 +14,7 @@
 <ul>
 	<li><a href="/FWP/index.jsp">home</a></li>
 	<li><a href="">회원</a></li>
-	<li><a href="">공지</a></li>
+	<li><a href="/FWP/nlist">공지사항</a></li>
 	<li><a href="">게시글</a></li>
 	<li><a href="">앨범</a></li>
 	<li><a href="">자료</a></li>

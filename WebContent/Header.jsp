@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>admin</title>
 </head>
-<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+<link href="/FWP/resources/css/newcss.css" rel="stylesheet" type="text/css">
 <body>
 
 <h1>첫 jsp</h1>
