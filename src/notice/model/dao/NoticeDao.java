@@ -9,84 +9,138 @@ import com.sun.corba.se.spi.orbutil.fsm.State;
 import static common.jdbcTemplate.*;
 import notice.model.vo.Notice;
 
-public class NoticeDao {
- public NoticeDao() {
-	// TODO Auto-generated constructor stub
-}
 
-	
-	public List<Notice> selectList(Connection con){
-		List<Notice> list=new ArrayList<Notice>();
-		Statement stmt=null;
-		ResultSet rset=null;
-		String query="select * from notice order by noticeno desc";
-		try {
-			stmt=con.createStatement();
-			rset=stmt.executeQuery(query);
+	 public class NoticeDao {
+			public NoticeDao() {}
 			
-			while(rset.next()) {
+			public List<Notice> selectList(Connection con){
+				List<Notice> list = new ArrayList<Notice>();
+				Statement stmt = null;
+				ResultSet rset = null;
 				
-				Notice n = new Notice();
-				n.setNoticeNO(rset.getInt("NOTICENO"));
-				n.setNoticeTitle(rset.getString("NOTICETITLE"));
-				n.setNoticeDate(rset.getDate("NOTICEDATE"));
-				n.setNoticeWriter(rset.getString("NOTICEWRITER"));
-				n.setNoticeContent(rset.getString("NOTICECONTENT"));
-				n.setOriginalFilePath(rset.getString("ORIGINAL_FILEPATH"));
-				n.setRenameFilePath(rset.getString("RENAME_FILEPATH"));
-				list.add(n);
+				String query = "select * from notice order by noticeno desc";
 				
+				try {
+					stmt = con.createStatement();
+					rset = stmt.executeQuery(query);
+					
+					while(rset.next()) {
+						Notice n = new Notice();
+						
+						n.setNoticeNO(rset.getInt("noticeno"));
+						n.setNoticeTitle(rset.getString("noticetitle"));
+						n.setNoticeDate(rset.getDate("noticedate"));
+						n.setNoticeWriter(rset.getString("noticewriter"));
+						n.setNoticeContent(rset.getString("noticecontent"));
+						n.setOriginalFilePath(rset.getString("original_filepath"));
+						n.setRenameFilePath(rset.getString("rename_filepath"));
+						
+						list.add(n);
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					close(rset);
+					close(stmt);
+				}
+				
+				return list;
 			}
 			
+			public Notice selectNotice(Connection con, int noticeNo) {
+				Notice notice = null;
+				PreparedStatement pstmt = null;
+				ResultSet rset = null;
+				
+				String query = "select * from notice where noticeno = ?";
+				
+				try {
+					pstmt = con.prepareStatement(query);
+					pstmt.setInt(1, noticeNo);
+					
+					rset = pstmt.executeQuery();
+					
+					if(rset.next()) {
+						notice = new Notice();
+						
+						notice.setNoticeNO(noticeNo);
+						notice.setNoticeTitle(rset.getString("noticetitle"));
+						notice.setNoticeWriter(rset.getString("noticewriter"));
+						notice.setNoticeContent(rset.getString("noticecontent"));
+						notice.setNoticeDate(rset.getDate("noticedate"));
+						notice.setOriginalFilePath(rset.getString("original_filepath"));
+						notice.setRenameFilePath(rset.getString("rename_filepath"));				
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					close(rset);
+					close(pstmt);
+				}
+				
+				return notice;
+			}
 			
+			public int insertNotice(Connection con, Notice notice) {
+				int result = 0;
+				PreparedStatement pstmt = null;
+				
+				String query = "insert into notice values ("
+						+ "(select max(noticeno) from notice) + 1, "
+						+ "?, default, ?, ?, ?, ?)";
+				
+				try {
+					pstmt = con.prepareStatement(query);
+					pstmt.setString(1, notice.getNoticeTitle());
+					pstmt.setString(2, notice.getNoticeWriter());
+					pstmt.setString(3, notice.getNoticeContent());
+					pstmt.setString(4, notice.getOriginalFilePath());
+					pstmt.setString(5, notice.getRenameFilePath());
+					
+					result = pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					close(pstmt);
+				}
+				
+				return result;
+			}
 			
-		} catch (Exception e) {
-		e.printStackTrace();
-		}finally {
-			close(rset);
-			close(stmt);
-		}
-		
-		return list;
-		
-	}
-	
-	public Notice selectNotice(Connection con, int noticeNo) {		
-		return null;
-		}
-	
-	public int insertNotice(Connection con, Notice notice) {		
-		return (Integer) null;
-		}
-	
-	public int updateNotice(Connection con, Notice notice) {		
-		return (Integer) null;
-		}
-	
-	public int deleteNotice(Connection con, int noticeNo) {	
-		int result = 0;
-		
-		
-		
-		return (Integer) null;
-		}
-	
-	public List<Notice> selectSearchTitle(Connection con, 
-			String keyword){		
-		return null;
-		}
-	
-	public List<Notice> selectSearchDate(Connection con,
-			Date start, Date end){	
-		List<Notice> list=new ArrayList<Notice>();
-	
-		
-		return null;
-		}
-	
-	public List<Notice> selectSearchWriter(Connection con,
-			String keyword){		
-		return null;
+			public int updateNotice(Connection con, Notice notice) {
+				int result = 0;
+				
+				return result;
+			}
+			
+			public int deleteNotice(Connection con, int noticeNo) {
+				int result = 0;
+				
+				return result;
+			}
+			
+			public List<Notice> selectSearchTitle(Connection con, 
+					String keyword){
+				List<Notice> list = new ArrayList<Notice>();
+				
+				return list;
+			}
+			
+			public List<Notice> selectSearchDate(Connection con,
+					Date start, Date end){
+				List<Notice> list = new ArrayList<Notice>();
+				
+				return list;
+			}
+			
+			public List<Notice> selectSearchWriter(Connection con,
+					String keyword){
+				List<Notice> list = new ArrayList<Notice>();
+				
+				return list;
+			}
 		}
 
-}

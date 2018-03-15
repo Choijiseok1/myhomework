@@ -26,7 +26,9 @@ public Notice(int noticeNO, String noticeTitle, Date noticeDate, String noticeCo
 	this.originalFilePath = originalFilePath;
 	this.renameFilePath = renameFilePath;
 }
-public int getNoticeNO() {
+
+
+	public int getNoticeNO() {
 	return noticeNO;
 }
 public void setNoticeNO(int noticeNO) {
@@ -71,7 +73,6 @@ public void setRenameFilePath(String renameFilePath) {
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }
-
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
