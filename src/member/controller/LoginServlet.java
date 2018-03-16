@@ -31,8 +31,6 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	//System.out.println("로그인 서블릿 구동완료");
 	//1.전송온 값이 한글이 ㅣㅇㅆ을경우 인코읻ㅇ
 		request.setCharacterEncoding("utf-8");
