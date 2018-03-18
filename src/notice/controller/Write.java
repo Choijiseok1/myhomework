@@ -70,7 +70,8 @@ public class Write extends HttpServlet {
 				//request 객체는 MultipartRequest 객체로 변환됨
 				MultipartRequest mrequest = new MultipartRequest(
 						request, savePath, maxSize, "utf-8",
-						new DefaultFileRenamePolicy());		
+						new DefaultFileRenamePolicy()
+						);		
 				
 			
 				//2. 전송온 값 꺼내서 변수 또는 객체에 저장하기

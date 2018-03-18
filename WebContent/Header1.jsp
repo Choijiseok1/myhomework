@@ -20,7 +20,6 @@
 	<li><a href="">자료</a></li>
 </ul>
 </nav>
-</header>
-<nav>
+
 </body>
 </html>

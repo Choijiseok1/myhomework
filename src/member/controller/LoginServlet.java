@@ -44,7 +44,6 @@ public class LoginServlet extends HttpServlet {
 	//4. 받은 결과를 가지고 성공/실패에 따라 선택해서 내보냄
 	response.setContentType("text/html; charset=utf-8");
 	if(loginUser !=null ) {
-		System.out.println("성공!~시의벌ㅋ");
 		HttpSession session=request.getSession();
 		session.setMaxInactiveInterval(60*30);//30분뒤 파기? 
 		//System.out.println("세션 아이디"+session.getId());

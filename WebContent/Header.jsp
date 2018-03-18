@@ -21,7 +21,6 @@
 	<li><a href="">자료실관리</a></li>
 </ul>
 </nav>
-</header>
-<nav>
+
 </body>
 </html>

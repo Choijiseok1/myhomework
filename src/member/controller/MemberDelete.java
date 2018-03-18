@@ -50,9 +50,7 @@ public class MemberDelete extends HttpServlet {
 			session.invalidate();
 			
 			response.sendRedirect("index.jsp");
-							
-			
-			
+				
 			} else {
 				view=request.getRequestDispatcher("view/member/memberError.jsp");
 				request.setAttribute("message","정보보기 실패");
