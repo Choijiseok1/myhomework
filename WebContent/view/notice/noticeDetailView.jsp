@@ -12,11 +12,12 @@
 <head>
 <script type="text/javascript">
 function movePage(){
-	location.href="/FWP/nuppage?no=+<%= notice.getNoticeNO()%>";
+	location.href="/FWP/nupview?no=<%=notice.getNoticeNO()%>";
 	return false;	
+	
 }
 function deleteNotice(){
-	location.href="/FWP/ndel?no=+<%= notice.getNoticeNO()%>";
+	location.href="/FWP/ndel?no=<%=notice.getNoticeNO()%>";
 	return false;
 	
 }
@@ -30,10 +31,10 @@ function deleteNotice(){
 <br>
 <h2 align="center"><%= notice.getNoticeNO()%>번 공지글 상세보기</h2>
 <br>
-<form action="/first/nwrite" method="post" enctype="multipart/form-data">
+<form action="/FWP/nwrite" method="post" enctype="multipart/form-data" name="form">
 <table align="center" width="600">
-<tr><th bgcolor="orange">제 목</th>
-<td><input type="text" name="title" size="80"></td></tr>
+<tr><th bgcolor="orange" >제 목</th>
+<td><input type="text" name="title" size="80" value="<%=notice.getNoticeTitle()%>"  readonly></td></tr>
 <tr><th bgcolor="orange">작성자</th>
 <td><input type="text" name="writer" value="<%= notice.getNoticeWriter()%>" readonly></td>
 </tr>
@@ -52,8 +53,8 @@ function deleteNotice(){
 </tr>
 <tr><th colspan="2" bgcolor="orange">
 <%if(loginUser.getUserid().equals(notice.getNoticeWriter())){ %>
-<input type="button" value="수정페이지로 이동"> &nbsp;
-<input type="button" value="글삭제"> &nbsp;
+<input type="button" value="수정페이지로 이동" onclick="movePage()"> &nbsp;
+<input type="button" value="글삭제" onclick="deleteNotice()">
 
 <%}%>
 

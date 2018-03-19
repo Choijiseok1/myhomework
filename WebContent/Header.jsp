@@ -14,7 +14,7 @@
 <ul>
 	<li><a href="/FWP/index.jsp">home</a></li>
 	<li><a href="/FWP/mall">회원관리</a></li>
-	<li><a href="">공지관리</a></li>
+	<li><a href="/FWP/view\notice\noticeListView.jsp">공지관리</a></li>
 	<li><a href="">게시글관리</a></li>
 	<li><a href="">앨범관리</a></li>
 	<li><a href="">자료실</a></li>

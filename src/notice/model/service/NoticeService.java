@@ -55,6 +55,7 @@ public class NoticeService {
 		else
 			rollback(con);
 		close(con);
+		
 		return result;
 	}
 	
