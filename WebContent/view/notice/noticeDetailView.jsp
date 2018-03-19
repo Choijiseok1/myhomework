@@ -8,7 +8,7 @@
 	
 %>    
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <script type="text/javascript">
 function movePage(){
